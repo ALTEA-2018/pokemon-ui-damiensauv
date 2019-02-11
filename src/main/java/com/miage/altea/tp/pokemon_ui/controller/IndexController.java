@@ -2,6 +2,8 @@ package com.miage.altea.tp.pokemon_ui.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class IndexController {
@@ -11,4 +13,11 @@ public class IndexController {
         return "index";
     }
 
+    @PostMapping("/registerTrainer")
+    ModelAndView registerNewTrainer(String trainerName){
+
+        var modelAndview = new ModelAndView("register");
+        modelAndview.addObject("name", trainerName);
+        return modelAndview;
+    }
 }
