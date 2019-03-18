@@ -24,11 +24,11 @@ public class RestConfiguration {
 
         RestTemplate restTemplate = new RestTemplate();
 
-
+        /*
         final List<ClientHttpRequestInterceptor> interceptors = new ArrayList<ClientHttpRequestInterceptor>();
         interceptors.add(new BasicAuthInterceptor(username, password));
         restTemplate.setInterceptors(interceptors);
-
+        */
 
         return restTemplate;
     }

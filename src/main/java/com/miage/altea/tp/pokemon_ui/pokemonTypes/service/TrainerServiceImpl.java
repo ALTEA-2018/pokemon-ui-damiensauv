@@ -6,10 +6,12 @@ import org.springframework.web.client.RestTemplate;
 
 public class TrainerServiceImpl {
 
+    private RestTemplate restTemplate;
+
     @Autowired
     @Qualifier("trainerApiRestTemplate")
     void setRestTemplate(RestTemplate restTemplate) {
-        //this.restTemplate = restTemplate;
+        this.restTemplate = restTemplate;
     }
 
 }
