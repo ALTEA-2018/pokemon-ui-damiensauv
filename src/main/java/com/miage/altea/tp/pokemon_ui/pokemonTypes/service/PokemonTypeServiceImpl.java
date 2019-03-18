@@ -32,4 +32,8 @@ public class PokemonTypeServiceImpl implements PokemonTypeService {
     void setPokemonTypeServiceUrl(String pokemonServiceUrl) {
         this.url = pokemonServiceUrl + "/pokemon-types";
     }
+
+    public PokemonType getPokemonType(int i) {
+        return restTemplate.getForObject(this.url, PokemonType.class);
+    }
 }
