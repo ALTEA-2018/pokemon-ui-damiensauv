@@ -1,11 +1,14 @@
 package com.miage.altea.tp.pokemon_ui.trainers.bo;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Pokemon {
 
     private int id;
-
     private int pokemonType;
-
     private int level;
 
     public Pokemon() {
@@ -16,27 +19,4 @@ public class Pokemon {
         this.level = level;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getPokemonType() {
-        return pokemonType;
-    }
-
-    public void setPokemonType(int pokemonType) {
-        this.pokemonType = pokemonType;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
 }

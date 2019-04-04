@@ -1,5 +1,6 @@
 package com.miage.altea.tp.pokemon_ui.pokemonTypes.bo;
 
+
 public class Trainer {
 
     private String password;
