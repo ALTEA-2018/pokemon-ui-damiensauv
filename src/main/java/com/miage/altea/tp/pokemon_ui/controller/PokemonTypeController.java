@@ -6,21 +6,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class PokemonTypeController {
 
     private PokemonTypeService pokemonTypeService;
 
-    @GetMapping(value = "/pokedex")
+    @GetMapping("/pokedex")
     public ModelAndView pokedex() {
+        Map<String, Object> stringObjectMap = new HashMap<>();
+        List<PokemonType> pokemonTypes = pokemonTypeService.listPokemonsTypes();
 
-        List<PokemonType> pokemonTypes = this.pokemonTypeService.listPokemonsTypes();
+        pokemonTypes.sort(Comparator.comparing(PokemonType::getId));
+        stringObjectMap.put("pokemonTypes", pokemonTypes);
 
-        var modelAndview = new ModelAndView("pokedex");
-        modelAndview.addObject("pokemonTypes", pokemonTypes);
-        return modelAndview;
+        return new ModelAndView("pokedex", stringObjectMap);
     }
 
     public void setPokemonTypeService(PokemonTypeService pokemonTypeService) {

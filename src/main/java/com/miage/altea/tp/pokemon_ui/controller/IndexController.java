@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Controller
 public class IndexController {
 
@@ -14,10 +17,10 @@ public class IndexController {
     }
 
     @PostMapping("/registerTrainer")
-    ModelAndView registerNewTrainer(String trainerName){
+    ModelAndView registerNewTrainer(String trainerName) {
+        Map<String, Object> stringObjectMap = new HashMap<>();
+        stringObjectMap.put("name", trainerName);
 
-        var modelAndview = new ModelAndView("register");
-        modelAndview.addObject("name", trainerName);
-        return modelAndview;
+        return new ModelAndView("register", stringObjectMap);
     }
 }

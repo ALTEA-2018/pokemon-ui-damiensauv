@@ -3,7 +3,13 @@ package com.miage.altea.tp.pokemon_ui.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.http.client.ClientHttpRequestInterceptor;
+import org.springframework.http.client.support.BasicAuthenticationInterceptor;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Configuration
 public class RestConfiguration {
@@ -20,11 +26,15 @@ public class RestConfiguration {
 
         RestTemplate restTemplate = new RestTemplate();
 
-        /*
-        final List<ClientHttpRequestInterceptor> interceptors = new ArrayList<ClientHttpRequestInterceptor>();
-        interceptors.add(new BasicAuthInterceptor(username, password));
+        List<ClientHttpRequestInterceptor> interceptors = new ArrayList<>();
+        interceptors.add(new BasicAuthenticationInterceptor(this.username, this.password));
+        interceptors.add(
+                (request, body, execution) ->
+                {
+                    request.getHeaders().add("Accept-Language", LocaleContextHolder.getLocale().getLanguage());
+                    return execution.execute(request, body);
+                });
         restTemplate.setInterceptors(interceptors);
-        */
 
         return restTemplate;
     }

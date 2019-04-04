@@ -8,4 +8,6 @@ public interface PokemonTypeService {
 
     List<PokemonType> listPokemonsTypes();
 
+    PokemonType getPokemonByTypeId(Integer id);
+
 }

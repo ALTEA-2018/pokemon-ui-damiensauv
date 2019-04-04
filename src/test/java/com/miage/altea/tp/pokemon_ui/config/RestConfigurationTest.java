@@ -22,7 +22,7 @@ class RestConfigurationTest {
 
         var interceptors = restTemplate.getInterceptors();
         assertNotNull(interceptors);
-        assertEquals(1, interceptors.size());
+        assertEquals(2, interceptors.size());
 
         var interceptor = interceptors.get(0);
         assertNotNull(interceptor);
