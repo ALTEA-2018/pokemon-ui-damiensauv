@@ -25,7 +25,6 @@ public class RestConfiguration {
     RestTemplate trainerApiRestTemplate() {
 
         RestTemplate restTemplate = new RestTemplate();
-
         List<ClientHttpRequestInterceptor> interceptors = new ArrayList<>();
         interceptors.add(new BasicAuthenticationInterceptor(this.username, this.password));
         interceptors.add(
